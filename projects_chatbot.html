@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive NLP Chatbot - Project Portfolio</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #4a90e2;
+            --secondary-color: #50c878;
+            --background-color: #f8f9fa;
+            --text-color: #333;
+            --highlight-color: #ff6b6b;
+        }
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: var(--background-color);
+            color: var(--text-color);
+        }
+        .navbar {
+            background-color: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+        .navbar-brand {
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+        .nav-link {
+            color: var(--text-color);
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        .nav-link:hover {
+            color: var(--primary-color);
+        }
+        .hero-section {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 150px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('https://via.placeholder.com/1500x800') no-repeat center center;
+            background-size: cover;
+            opacity: 0.2;
+            z-index: 0;
+        }
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+        .hero-section h1 {
+            font-size: 4rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        .hero-section p {
+            font-size: 1.5rem;
+            margin-bottom: 30px;
+        }
+        .btn-custom {
+            background-color: var(--highlight-color);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 30px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+        }
+        .btn-custom:hover {
+            background-color: #ff4757;
+            transform: translateY(-3px);
+            box-shadow: 0 4px 15px rgba(255, 107, 107, 0.4);
+        }
+        .section-title {
+            margin-bottom: 50px;
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            position: relative;
+            text-align: center;
+            font-weight: 700;
+        }
+        .section-title::after {
+            content: '';
+            width: 70px;
+            height: 4px;
+            background-color: var(--highlight-color);
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        .project-image {
+            border-radius: 20px;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+            transition: all 0.5s ease;
+        }
+        .project-image:hover {
+            transform: translateY(-15px) scale(1.03);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+        }
+        .chatbot-section {
+            padding: 100px 0;
+            background-color: white;
+        }
+        .chatbot-description {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            color: #555;
+        }
+        .feature-item {
+            text-align: center;
+            padding: 30px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            margin-bottom: 30px;
+        }
+        .feature-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+        }
+        .feature-icon {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+        .feature-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+        .technology-section {
+            padding: 80px 0;
+            background-color: #f0f4f8;
+        }
+        .technology-item {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            width: 150px;
+            height: 150px;
+            margin: 20px;
+            background-color: white;
+            border-radius: 50%;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+        .technology-item:hover {
+            transform: translateY(-10px) scale(1.05);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+        }
+        .technology-item img {
+            width: 70px;
+            height: 70px;
+            object-fit: contain;
+            margin-bottom: 10px;
+        }
+        .technology-item span {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--text-color);
+        }
+        .video-section {
+            background-color: #2c3e50;
+            padding: 100px 0;
+            text-align: center;
+            color: white;
+        }
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            max-width: 800px;
+            margin: 0 auto;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+            border-radius: 10px;
+        }
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 10px;
+        }
+        footer {
+            background-color: #2c3e50;
+            color: white;
+            padding: 50px 0;
+            text-align: center;
+        }
+        .social-icons {
+            margin-top: 20px;
+        }
+        .social-icons a {
+            color: white;
+            font-size: 1.5rem;
+            margin: 0 10px;
+            transition: color 0.3s ease;
+        }
+        .social-icons a:hover {
+            color: var(--highlight-color);
+        }
+        @media (max-width: 768px) {
+            .hero-section h1 {
+                font-size: 3rem;
+            }
+            .hero-section p {
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">John Doe</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#projects">Projects</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#features">Features</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#technologies">Technologies</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="container hero-content">
+            <h1 class="display-3 fw-bold" data-aos="fade-up">NLP Chatbot</h1>
+            <p class="lead mb-4" data-aos="fade-up" data-aos-delay="100">Revolutionizing conversations with advanced AI technology</p>
+            <a href="#projects" class="btn btn-custom" data-aos="fade-up" data-aos-delay="200">Explore Project</a>
+        </div>
+    </section>
+
+    <!-- Chatbot Project Section -->
+    <section class="chatbot-section" id="projects">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">Project Overview</h2>
+            <div class="row align-items-center">
+                <div class="col-lg-6 mb-4" data-aos="fade-right">
+                    <img src="https://via.placeholder.com/600x400" alt="Chatbot Screenshot" class="img-fluid project-image">
+                </div>
+                <div class="col-lg-6" data-aos="fade-left">
+                    <p class="chatbot-description">
+                        Our NLP-based chatbot harnesses the power of advanced natural language processing to understand and respond to user inputs with unprecedented accuracy and contextual awareness. Built on a foundation of Python, spaCy, and NLTK, this chatbot represents the cutting edge of conversational AI technology.
+                    </p>
+                    <p class="chatbot-description">
+                        Whether deployed for customer service, as an intelligent assistant, or in specialized industry applications, our chatbot adapts to provide precise, contextual responses that evolve with use. Its user-friendly interface and robust backend make it an ideal solution for businesses looking to enhance their digital interaction capabilities.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features-section py-5" id="features">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">Key Features</h2>
+            <div class="row">
+                <div class="col-md-4" data-aos="fade-up">
+                    <div class="feature-item">
+                        <i class="fas fa-brain feature-icon"></i>
+                        <h3 class="feature-title">Advanced NLP</h3>
+                        <p>Utilizes cutting-edge natural language processing for human-like understanding.</p>
+                    </div>
+                </div>
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="feature-item">
+                        <i class="fas fa-cogs feature-icon"></i>
+                        <h3 class="feature-title">Adaptive Learning</h3>
+                        <p>Continuously improves responses based on interactions and feedback.</p>
+                    </div>
+                </div>
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="feature-item">
+                        <i class="fas fa-lock feature-icon"></i>
+                        <h3 class="feature-title">Secure Integration</h3>
+                        <p>Easily integrates with existing systems while maintaining data security.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technologies Used Section -->
+    <section class="technology-section" id="technologies">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">Technologies Used</h2>
+            <div class="d-flex flex-wrap justify-content-center">
+                <div class="technology-item" data-aos="zoom-in">
+                    <img src="https://via.placeholder.com/70x70" alt="Python Logo">
+                    <span>Python</span>
+                </div>
+                <div class="technology-item" data-aos="zoom-in" data-aos-delay="100">
+                    <img src="https://via.placeholder.com/70x70" alt="Flask Logo">
+                    <span>Flask</span>
+                </div>
+                <div class="technology-item" data-aos="zoom-in" data-aos-delay="200">
+                    <img src="https://via.placeholder.com/70x70" alt="NLP Logo">
+                    <span>NLP</span>
+                </div>
+                <div class="technology-item" data-aos="zoom-in" data-aos-delay="300">
+                    <img src="https://via.placeholder.com/70x70" alt="Bootstrap Logo">
+                    <span>Bootstrap</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Video Section -->
+    <section class="video-section">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">See It In Action</h2>
+            <div class="video-container" data-aos="zoom-in">
+                <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="container">
+            <h3>John Doe</h3>
+            <p>AI Developer & NLP Specialist
+                <p>AI Developer & NLP Specialist</p>
+            <div class="social-icons">
+                <a href="#" target="_blank"><i class="fab fa-github"></i></a>
+                <a href="#" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
+            </div>
+            <p class="mt-4">© 2024 John Doe. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 1000,
+            once: true
+        });
+
+        // Smooth scrolling for nav links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Navbar background change on scroll
+        window.addEventListener('scroll', function() {
+            var navbar = document.querySelector('.navbar');
+            if (window.scrollY > 100) {
+                navbar.style.backgroundColor = 'rgba(255, 255, 255, 0.95)';
+                navbar.style.boxShadow = '0 2px 10px rgba(0,0,0,0.1)';
+            } else {
+                navbar.style.backgroundColor = 'rgba(255, 255, 255, 0.7)';
+                navbar.style.boxShadow = 'none';
+            }
+        });
+
+        // Typing effect in hero section
+        var typed = new Typed('#typed-text', {
+            strings: ["Revolutionizing conversations", "Powered by AI", "Enhancing user experiences"],
+            typeSpeed: 50,
+            backSpeed: 30,
+            backDelay: 2000,
+            startDelay: 1000,
+            loop: true
+        });
+
+        // Project image hover effect
+        const projectImage = document.querySelector('.project-image');
+        projectImage.addEventListener('mousemove', (e) => {
+            const { left, top, width, height } = projectImage.getBoundingClientRect();
+            const x = (e.clientX - left) / width;
+            const y = (e.clientY - top) / height;
+            projectImage.style.transform = `perspective(1000px) rotateY(${x * 10}deg) rotateX(${y * -10}deg) scale3d(1.05, 1.05, 1.05)`;
+        });
+        projectImage.addEventListener('mouseleave', () => {
+            projectImage.style.transform = 'none';
+        });
+
+        // Intersection Observer for navbar
+        const navbar = document.querySelector('.navbar');
+        const heroSection = document.querySelector('.hero-section');
+        const observer = new IntersectionObserver(
+            ([entry]) => {
+                if (entry.isIntersecting) {
+                    navbar.classList.remove('scrolled');
+                } else {
+                    navbar.classList.add('scrolled');
+                }
+            },
+            { threshold: 0.1 }
+        );
+        observer.observe(heroSection);
+
+        // Lazy loading for images
+        const images = document.querySelectorAll('img');
+        const imageObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const img = entry.target;
+                    img.src = img.dataset.src;
+                    img.classList.remove('lazy');
+                    imageObserver.unobserve(img);
+                }
+            });
+        });
+        images.forEach(img => imageObserver.observe(img));
+    </script>
+</body>
+</html>

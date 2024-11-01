@@ -1,0 +1,45 @@
+/* style.css */
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f8f9fa;
+    color: #333;
+  }
+  
+  /* Hero Section */
+  .hero-section {
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('hero-bg.jpg') no-repeat center center / cover;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .hero-section h1 {
+    font-size: 3rem;
+    font-weight: bold;
+  }
+  
+  .bg-gradient {
+    background: linear-gradient(135deg, #005bea 0%, #00c6fb 100%);
+    color: #fff;
+  }
+  
+  .project-details img {
+    border-radius: 8px;
+  }
+  
+  /* Hover Effect on Images */
+  .hover-zoom {
+    transition: transform 0.3s ease;
+  }
+  
+  .hover-zoom:hover {
+    transform: scale(1.05);
+  }
+  
+  /* Footer */
+  footer {
+    font-size: 0.9rem;
+  }
+  

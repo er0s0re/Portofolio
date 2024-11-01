@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Eros Alfedo Hermanto - Web Developer & Data Enthusiast</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+        <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+        <style>
+            :root {
+            --primary-color: #007bff;
+            --secondary-color: #6c757d;
+            --background-color: #f8f9fa;
+            }
+            body {
+            font-family: 'Roboto', sans-serif;
+            color: #333;
+            }
+            .navbar {
+            background-color: rgba(255, 255, 255, 0.9) !important;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+            }
+            .navbar.scrolled {
+            background-color: rgba(255, 255, 255, 1) !important;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            }
+            #hero {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 100px 0;
+            position: relative;
+            overflow: hidden;
+            }
+            #hero::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 100px;
+            background: linear-gradient(to top, rgba(255,255,255,1), rgba(255,255,255,0));
+            }
+            .hero-content {
+            position: relative;
+            z-index: 1;
+            }
+            .section-title {
+            position: relative;
+            display: inline-block;
+            margin-bottom: 30px;
+            }
+            .section-title::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -10px;
+            width: 50px;
+            height: 3px;
+            background-color: var(--primary-color);
+            transition: width 0.3s ease;
+            }
+            .section-title:hover::after {
+            width: 100%;
+            }
+            .project-card {
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+            }
+            .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            }
+            .btn-custom {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            transition: all 0.3s ease;
+            }
+            .btn-custom:hover {
+            background-color: var(--secondary-color);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            }
+            .skill-item {
+            background-color: #f8f9fa;
+            border-radius: 20px;
+            padding: 8px 15px;
+            margin: 5px 0;
+            display: inline-block;
+            transition: all 0.3s ease;
+            }
+            .skill-item:hover {
+            background-color: #007bff;
+            color: white;
+            transform: scale(1.05);
+            }
+            .skill-item i {
+            margin-right: 5px;
+            }
+            .contact-icon {
+            font-size: 2rem;
+            color: var(--primary-color);
+            transition: all 0.3s ease;
+            }
+            .contact-icon:hover {
+            color: var(--secondary-color);
+            transform: scale(1.2);
+            }
+            @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0px); }
+            }
+            .floating {
+            animation: float 4s ease-in-out infinite;
+            }
+            @keyframes fadeInUp {
+            from {
+            opacity: 0;
+            transform: translateY(20px);
+            }
+            to {
+            opacity: 1;
+            transform: translateY(0);
+            }
+            }
+            #hero h1, #hero p {
+            animation: fadeInUp 1s ease-in-out;
+            }
+            #skills img {
+            width: 3em;
+            height: 3em;
+            object-fit: contain;
+            }
+            .btn-drive {
+            background-color: #4285F4;
+            color: white;
+            transition: all 0.3s ease;
+            }
+            .btn-drive:hover {
+            background-color: #3367D6;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            }
+            .cv-card {
+            transition: transform 0.3s ease;
+            border: none;
+            border-radius: 15px;
+            }
+            .cv-card:hover {
+            transform: translateY(-10px);
+            }
+            .cv-icon {
+            color: #007bff;
+            }
+            .cv-card .btn {
+            border-radius: 25px;
+            padding: 10px 25px;
+            }
+            .btn:hover {
+            opacity: 0.9;
+            }
+        </style>
+    </head>
+    <body>
+        <!-- Navbar -->
+        <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+            <div class="container">
+                <a class="navbar-brand fw-bold" href="#">Eros Alfedo Hermanto</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#about">About</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#projects">Projects</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#skills">Skills</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#contact">Contact</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#certifications">Certifications</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <!-- Hero Section -->
+        <section id="hero" class="text-center">
+            <div class="container hero-content">
+                <img src="assets/images/200x200.jpg" alt="Eros Alfedo Hermanto" class="rounded-circle mb-4 floating" width="150" data-aos="fade-up">
+                <h1 class="display-4 fw-bold mb-3" data-aos="fade-up" data-aos-delay="100">Eros Alfedo Hermanto</h1>
+                <p class="lead mb-4" data-aos="fade-up" data-aos-delay="200"></p>
+                <a href="#projects" class="btn btn-lg btn-custom" data-aos="fade-up" data-aos-delay="300">View My Work</a>
+            </div>
+        </section>
+        <!-- About Section -->
+        <section id="about" class="py-5">
+            <div class="container">
+                <h2 class="section-title text-center" data-aos="fade-up">About Me</h2>
+                <div class="row align-items-center">
+                    <div class="col-md-6" data-aos="fade-right">
+                        <p style="font-size: 1.4rem; line-height: 1.6;">Saya adalah pengembang web dan penggemar data yang antusias, dengan fokus dalam menciptakan solusi digital yang inovatif dan 
+                            berorientasi pada pengguna. Dengan keahlian di bidang pengembangan web full-stack dan analisis data, saya berkomitmen untuk 
+                            merancang aplikasi yang efektif dalam memecahkan Problem Solving.
+                        </p>
+                        <p style="font-size: 1.4rem; line-height: 1.6;">Kombinasi kemampuan teknis dan analytical thinking memungkinkan saya untuk menghadirkan solusi komprehensif dalam setiap proyek yang 
+                            saya kerjakan. Selalu update dengan perkembangan teknologi terbaru, saya berkomitmen untuk terus mengembangkan diri dan memberikan 
+                            hasil terbaik dalam setiap tantangan pengembangan software
+                        </p>
+                    </div>
+                    <div class="col-md-6" data-aos="fade-left">
+                        <img src="assets/images/Duh/19.png" alt="About Me" class="img-fluid rounded shadow" width="500" height="300">
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Projects Section -->
+        <section id="projects" class="py-5 bg-light">
+            <div class="container">
+                <h2 class="section-title text-center" data-aos="fade-up">My Projects</h2>
+                <!-- Web Projects -->
+                <h3 class="mt-4 mb-3" data-aos="fade-up">Web Projects</h3>
+                <div class="row">
+                    <!-- Web Project 1 -->
+                    <div class="col-md-4 mb-4" data-aos="fade-up">
+                        <div class="card project-card h-100 shadow">
+                            <img src="assets/images/Kasir Online/Gambar/Desain tanpa judul.jpg" class="card-img-top" alt="Web-based Inventory System">
+                            <div class="card-body">
+                                <h5 class="card-title">Sistem Kasir Online</h5>
+                                <p class="card-text">Sistem point of sale berbasis web yang dibangun dengan PHP, MySQL, dan Bootstrap. Dilengkapi fitur manajemen stok, multi-metode pembayaran, dan sistem pelaporan lengkap.</p>
+                                <div class="mt-3">
+                                    <a href="projects.html" class="btn btn-custom me-2">View Project</a>
+                                    <a href="https://youtu.be/Xdba9LTjr2U?si=6173v1WSQQErSJpc" target="_blank" class="btn btn-outline-danger"><i class="fab fa-youtube"></i> Demo</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Web Project 2 -->
+                    <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="100">
+                        <div class="card project-card h-100 shadow">
+                            <img src="assets/images/Repavingers/Desain tanpa judul.jpg" class="card-img-top" alt="E-commerce Platform">
+                            <div class="card-body">
+                                <h5 class="card-title">Repavingers</h5>
+                                <p class="card-text">Repavingers adalah proyek website yang mengatasi limbah plastik dengan membuat paving dari plastik. Proyek ini dibuat oleh saya dan rekan untuk mengikuti Hackfest 2024 Google.</p>
+                                <div class="mt-3">
+                                    <a href="projects1.html" class="btn btn-custom me-2">View Project</a>
+                                    <a href="https://github.com/er0s0re/Repavingers" target="_blank" class="btn btn-outline-secondary"><i class="fab fa-github"></i> Repo</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Web Project 3 -->
+                    <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="200">
+                        <div class="card project-card h-100 shadow">
+                            <img src="assets/images/Rikos/Desain tanpa judul.jpg" class="card-img-top" alt="Blog CMS">
+                            <div class="card-body">
+                                <h5 class="card-title">Rikos</h5>
+                                <p class="card-text">Rikos adalah platform web untuk pemesanan kamar kos online, memudahkan penyewa dan admin dalam pengelolaan. Proyek ini hasil kolaborasi dengan rekan saya.</p>
+                                <div class="mt-3">
+                                    <a href="projects2.html" class="btn btn-custom me-2">View Project</a>
+                                    <a href="https://github.com/er0s0re/Sistem-Informasi-Booking-Kamar-Kos" target="_blank" class="btn btn-outline-secondary"><i class="fab fa-github"></i> Repo</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- NLP Projects -->
+                <h3 class="mt-4 mb-3" data-aos="fade-up">Machine Learning Projects</h3>
+                <div class="row">
+                    <!-- NLP Project 1 -->
+                    <div class="col-md-6 mb-4" data-aos="fade-up">
+                        <div class="card project-card h-100 shadow">
+                            <img src="assets/images/debat capres.png" class="card-img-top" alt="Sentiment Analysis Tool">
+                            <div class="card-body">
+                                <h5 class="card-title">Analisis Sentiment Debat Capres</h5>
+                                <p class="card-text">Analisis sentimen terhadap debat calon presiden untuk memahami opini publik dan reaksi masyarakat terhadap pernyataan dan performa para kandidat.</p>
+                                <div class="mt-3">
+                                    <a href="https://github.com/er0s0re/Analisis-Sentiment-Debat-Capres/tree/main" target="_blank" class="btn btn-outline-secondary"><i class="fab fa-github"></i> Repo</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- NLP Project 2 -->
+                    <div class="col-md-6 mb-4" data-aos="fade-up" data-aos-delay="100">
+                        <div class="card project-card h-100 shadow">
+                            <img src="assets/images/analisis judul1.jpg" class="card-img-top" alt="Text Summarization Engine">
+                            <div class="card-body">
+                                <h5 class="card-title">Proyek Analisis Data PM2.5 - Dicoding Submission</h5>
+                                <p class="card-text">Proyek analisis data PM2.5 sebagai tugas akhir bootcamp analisis data di Dicoding, fokus pada pemahaman kualitas udara dan dampaknya.</p>
+                                <div class="mt-3">
+                                    <a href="https://github.com/er0s0re/Proyek-Analisis-Data" target="_blank" class="btn btn-outline-secondary"><i class="fab fa-github"></i> Repo</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Chatbot Projects -->
+                <h3 class="mt-4 mb-3" data-aos="fade-up">Chatbot Projects</h3>
+                <div class="row">
+                    <!-- Chatbot Project 1 -->
+                    <div class="col-md-6 mb-4" data-aos="fade-up">
+                        <div class="card project-card h-100 shadow">
+                            <img src="assets/images/Chatbot Reka/Desain tanpa judul/18.png" class="card-img-top" alt="Customer Service Chatbot">
+                            <div class="card-body">
+                                <h5 class="card-title">AI-Powered Data Interaction Platform</h5>
+                                <p class="card-text">Platform interaktif AI dengan Streamlit, Reka AI, Langchain, Pinecone, OpenAI Embeddings, dan Python, 
+                                    memungkinkan eksplorasi informasi secara dinamis dan responsif.
+                                </p>
+                                <div class="mt-3">
+                                    <a href="chatbot1.html" class="btn btn-custom me-2">View Project</a>
+                                    <a href="https://youtu.be/j1kvadkXi7g?si=jGxwzTmugsL824Z2" target="_blank" class="btn btn-outline-danger"><i class="fab fa-youtube"></i> Demo</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Chatbot Project 2 -->
+                    <div class="col-md-6 mb-4" data-aos="fade-up" data-aos-delay="100">
+                        <div class="card project-card h-100 shadow">
+                            <img src="assets/images/ChatbotWA/transparan1000x/12.png" class="card-img-top" alt="Mental Health Support Chatbot">
+                            <div class="card-body">
+                                <h5 class="card-title">AI Chatbot Berbasis WhatsApp</h5>
+                                <p class="card-text">Pengembangan chatbot berbasis WhatsApp menggunakan teknologi seperti Twilio, GPT-4o Mini, Langchain, Pinecone, FastAPI, Redis, dan Python untuk interaksi yang lebih baik.</p>
+                                <div class="mt-3">
+                                    <a href="chatbot2.html" class="btn btn-custom me-2">View Project</a>
+                                    <a href="https://youtu.be/xWiHfMbwtHw?si=qdEQI5CPVBHHUwS_" target="_blank" class="btn btn-outline-danger"><i class="fab fa-youtube"></i> Demo</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Skills Section -->
+        <section id="skills" class="py-5">
+            <div class="container">
+                <h2 class="section-title text-center" data-aos="fade-up">My Skills</h2>
+                <div class="row text-center">
+                    <div class="col-md-3 mb-4" data-aos="fade-up">
+                        <h4 class="mb-3">Frontend</h4>
+                        <div class="skill-item"><i class="fab fa-html5 fa-fw"></i> HTML5</div>
+                        <div class="skill-item"><i class="fab fa-css3-alt fa-fw"></i> CSS3</div>
+                        <div class="skill-item"><i class="fab fa-js fa-fw"></i> JavaScript</div>
+                        <div class="skill-item"><i class="fab fa-bootstrap fa-fw"></i> Bootstrap</div>
+                    </div>
+                    <div class="col-md-3 mb-4" data-aos="fade-up" data-aos-delay="100">
+                        <h4 class="mb-3">Backend</h4>
+                        <div class="skill-item"><i class="fab fa-php fa-fw"></i> PHP</div>
+                        <div class="skill-item"><i class="fab fa-python fa-fw"></i> Python</div>
+                        <div class="skill-item"><i class="fas fa-code fa-fw"></i> FastAPI</div>
+                        <div class="skill-item"><i class="fas fa-code fa-fw"></i> Flask</div>
+                        <div class="skill-item"><i class="fas fa-database fa-fw"></i> MySQL</div>
+                    </div>
+                    <div class="col-md-3 mb-4" data-aos="fade-up" data-aos-delay="200">
+                        <h4 class="mb-3">Data & AI</h4>
+                        <div class="skill-item"><i class="fas fa-chart-bar fa-fw"></i> Data Analysis</div>
+                        <div class="skill-item"><i class="fas fa-brain fa-fw"></i> Machine Learning</div>
+                        <div class="skill-item"><i class="fas fa-robot fa-fw"></i> NLP</div>
+                        <div class="skill-item"><i class="fas fa-comments fa-fw"></i> Chatbots</div>
+                        <div class="skill-item"><i class="fas fa-database fa-fw"></i> Pinecone</div>
+                        <div class="skill-item"><i class="fas fa-chart-line fa-fw"></i> Data Visualization</div>
+                    </div>
+                    <div class="col-md-3 mb-4" data-aos="fade-up" data-aos-delay="300">
+                        <h4 class="mb-3">Tools & Others</h4>
+                        <div class="skill-item"><i class="fab fa-git-alt fa-fw"></i> Git</div>
+                        <div class="skill-item"><i class="fab fa-github fa-fw"></i> GitHub</div>
+                        <div class="skill-item"><i class="fas fa-server fa-fw"></i> Redis</div>
+                        <div class="skill-item"><i class="fas fa-terminal fa-fw"></i> Command Line</div>
+                        <div class="skill-item"><i class="fas fa-project-diagram fa-fw"></i> CI/CD</div>
+                    </div>
+                </div>
+                <h3 class="text-center mt-5 mb-4" data-aos="fade-up">Favorite Tools</h3>
+                <div class="row text-center justify-content-center">
+                    <div class="col-md-2 col-4 mb-4" data-aos="fade-up">
+                        <i class="fab fa-3x fa-github"></i>
+                        <p class="mt-2">GitHub</p>
+                    </div>
+                    <div class="col-md-2 col-4 mb-4" data-aos="fade-up" data-aos-delay="100">
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" alt="VS Code" style="width: 3em; height: 3em;">
+                        <p class="mt-2">VS Code</p>
+                    </div>
+                    <div class="col-md-2 col-4 mb-4" data-aos="fade-up" data-aos-delay="200">
+                        <i class="fas fa-3x fa-terminal"></i>
+                        <p class="mt-2">Terminal</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="download-cv" class="py-5">
+            <div class="container">
+                <h2 class="section-title text-center" data-aos="fade-up">My Curriculum Vitae</h2>
+                <div class="row justify-content-center">
+                    <!-- Creative CV -->
+                    <div class="col-md-5 mb-4" data-aos="fade-up">
+                        <div class="card cv-card h-100 shadow">
+                            <div class="card-body text-center">
+                                <div class="cv-icon mb-3">
+                                    <i class="fas fa-paint-brush fa-3x"></i>
+                                </div>
+                                <h5 class="card-title">Creative CV</h5>
+                                <p class="card-text">A visually appealing CV designed to showcase your personality and creative skills. Perfect for design, marketing, and creative roles.</p>
+                                <a href="assets/CVKreatif.pdf" class="btn btn-custom me-2" download>
+                                <i class="fas fa-download me-2"></i>Download Creative CV
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- ATS-Friendly CV -->
+                    <div class="col-md-5 mb-4" data-aos="fade-up" data-aos-delay="100">
+                        <div class="card cv-card h-100 shadow">
+                            <div class="card-body text-center">
+                                <div class="cv-icon mb-3">
+                                    <i class="fas fa-file-alt fa-3x"></i>
+                                </div>
+                                <h5 class="card-title">ATS-Friendly CV</h5>
+                                <p class="card-text">A clean, professional CV optimized for Applicant Tracking Systems. Ideal for corporate applications and online job submissions.</p>
+                                <a href="assets/CVATS.pdf" class="btn btn-custom me-2" download>
+                                <i class="fas fa-download me-2"></i>Download ATS CV
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Contact Section -->
+        <section id="contact" class="py-5 bg-light">
+            <div class="container">
+                <h2 class="section-title text-center" data-aos="fade-up">Get in Touch</h2>
+                <div class="row justify-content-center">
+                    <div class="col-md-8 text-center">
+                        <p class="mb-4" data-aos="fade-up" data-aos-delay="100">I'm always open to new opportunities and collaborations. Feel free to reach out!</p>
+                        <div class="d-flex justify-content-center" data-aos="fade-up" data-aos-delay="200">
+                            <a href="mailto:erosalfedo1@gmail.com" class="mx-3"><i class="fas fa-envelope contact-icon"></i></a>
+                            <a href="https://www.linkedin.com/in/eros-alfedo-hermanto" target="_blank" class="mx-3"><i class="fab fa-linkedin contact-icon"></i></a>
+                            <a href="https://github.com/er0s0re" target="_blank" class="mx-3"><i class="fab fa-github contact-icon"></i></a>
+                            <a href="https://www.instagram.com/eros.alfedo" target="_blank" class="mx-3"><i class="fab fa-instagram contact-icon"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Footer -->
+        <footer class="bg-dark text-white text-center py-3">
+            <div class="container">
+                <p class="mb-0">&copy; 2024 Eros Alfedo Hermanto. All rights reserved.</p>
+            </div>
+        </footer>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+        <script>
+            // Initialize AOS
+            AOS.init({
+                duration: 1000,
+                once: true,
+            });
+            
+            // Navbar scroll effect
+            window.addEventListener('scroll', function() {
+                if (window.scrollY > 50) {
+                    document.querySelector('.navbar').classList.add('scrolled');
+                } else {
+                    document.querySelector('.navbar').classList.remove('scrolled');
+                }
+            });
+            
+            // Smooth scrolling for navigation links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                });
+            });
+            
+            // Typing effect for hero section
+            const heroText = "Web Developer | Data Enthusiast ";
+            const heroElement = document.querySelector('#hero p.lead');
+            let i = 0;
+            
+            function typeWriter() {
+                if (i < heroText.length) {
+                    heroElement.innerHTML = heroText.substring(0, i + 1);
+                    i++;
+                    setTimeout(typeWriter, 50);
+                }
+            }
+            
+            // Start typing effect when the page loads
+            window.addEventListener('load', typeWriter);
+    
+            // Certificate and button hover effects
+            document.querySelectorAll('.certificate-card').forEach(card => {
+                card.addEventListener('mouseenter', () => {
+                    card.style.transform = 'translateY(-5px)';
+                    card.style.boxShadow = '0 10px 20px rgba(0,0,0,0.1)';
+                });
+                card.addEventListener('mouseleave', () => {
+                    card.style.transform = 'translateY(0)';
+                    card.style.boxShadow = 'none';
+                });
+            });
+    
+            document.querySelector('.btn-drive').addEventListener('mouseenter', (e) => {
+                e.target.style.transform = 'translateY(-2px)';
+                e.target.style.boxShadow = '0 4px 10px rgba(0,0,0,0.1)';
+            });
+            document.querySelector('.btn-drive').addEventListener('mouseleave', (e) => {
+                e.target.style.transform = 'translateY(0)';
+                e.target.style.boxShadow = 'none';
+            });
+        </script>
+    </body>
+</html>
